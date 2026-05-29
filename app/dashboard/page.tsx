@@ -2,9 +2,9 @@ import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
 
 async function getResumeHistory() {
-  const res = await fetch("http://localhost:3000/api/resume/history", {
-    cache: "no-store",
-  });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/resume/history`, {
+      cache: "no-store",
+    });
 
   if (!res.ok) {
     return {
