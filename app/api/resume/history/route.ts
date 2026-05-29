@@ -27,8 +27,11 @@ export async function GET() {
     const averageScore =
       totalResumes > 0
         ? Math.round(
-            resumes.reduce((sum, resume) => sum + resume.atsScore, 0) /
-              totalResumes
+            resumes.reduce(
+              (sum: number, resume: { atsScore: number }) =>
+                sum + resume.atsScore,
+              0
+            ) / totalResumes
           )
         : 0;
 
