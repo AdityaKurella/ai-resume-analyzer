@@ -22,15 +22,15 @@ export async function GET() {
     const total = jobs.length;
 
     const applied = jobs.filter(
-      (job) => job.status === "Applied"
+      (job: { status: string }) => job.status === "Applied"
     ).length;
 
     const interview = jobs.filter(
-      (job) => job.status === "Interview"
+      (job: { status: string }) => job.status === "Interview"
     ).length;
 
     const rejected = jobs.filter(
-      (job) => job.status === "Rejected"
+      (job: { status: string }) => job.status === "Rejected"
     ).length;
 
     return NextResponse.json({
@@ -40,7 +40,7 @@ export async function GET() {
       rejected,
     });
   } catch (error) {
-    console.error(error);
+    console.error("JOB_STATS_ERROR", error);
 
     return NextResponse.json(
       { message: "Something went wrong" },
